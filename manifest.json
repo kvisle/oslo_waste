@@ -1,0 +1,10 @@
+{
+  "domain": "oslo_waste",
+  "name": "Oslo Kommune, Avfall og gjenvinning",
+  "documentation": "https://github.com/kvisle/oslo_waste/",
+  "requirements": [
+    "beautifulsoup4==4.7.1"
+  ],
+  "dependencies": [],
+  "codeowners": ["@kvisle"]
+}
