@@ -7,6 +7,7 @@ import voluptuous as vol
 import homeassistant.helpers.config_validation as cv
 from homeassistant.components.sensor import ENTITY_ID_FORMAT, PLATFORM_SCHEMA
 from homeassistant.const import ATTR_FRIENDLY_NAME
+from homeassistant.util import slugify
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.entity import Entity
 
@@ -76,19 +77,21 @@ class OsloWasteSensor(Entity):
             ATTR_FRIENDLY_NAME: self._waste_type
             }
         self.entity_slug = "{} {}".format(self._scraper._address, self._waste_type)
+        self.entity_id = ENTITY_ID_FORMAT.format(
+            slugify(self.entity_slug.replace(' ', '_')))
+
+    @property
+    def unique_id(self):
+        return self.entity_slug.replace(' ', '_')
 
     @property
     def name(self):
-        return self._waste_type
+        return self._waste_type.title()
 
     @property
     def state(self):
         if self._state is not None:
             return (self._state - date.today()).days
-
-    @property
-    def name(self):
-        return self.entity_slug
 
     @property
     def device_state_attributes(self) -> dict:
@@ -97,11 +100,6 @@ class OsloWasteSensor(Entity):
     @property
     def unit_of_measurement(self):
         return 'days'
-
-    @property
-    def icon(self):
-        """Return the icon."""
-        return 'mdi:trash-can'
 
     async def async_update(self):
         """
