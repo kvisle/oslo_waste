@@ -84,6 +84,11 @@ class OsloWasteSensor(Entity):
     def unit_of_measurement(self):
         return 'days'
 
+    @property
+    def icon(self):
+        """Return the icon."""
+        return 'mdi:trash-can'
+
     def update(self):
         # Ask scraper for new data if the current pickup date has passed or
         # missing.
