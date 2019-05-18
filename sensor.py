@@ -23,7 +23,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     ws = OsloWasteScraper(config)
 
     for wt in ws.waste_types():
-        add_devices([OsloWasteSensor(hass, ws, wt)])
+        add_devices([OsloWasteSensor(hass, ws, wt)], True)
 
 
 class OsloWasteScraper:
