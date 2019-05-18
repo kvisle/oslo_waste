@@ -4,7 +4,6 @@ from homeassistant.components.sensor import PLATFORM_SCHEMA, ENTITY_ID_FORMAT
 from homeassistant.const import ATTR_FRIENDLY_NAME
 
 import voluptuous as vol
-from bs4 import BeautifulSoup
 from datetime import datetime, date
 import requests
 
@@ -13,6 +12,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional('street'): cv.string,
 })
 
+REQUIREMENTS = ['beautifulsoup4==4.7.1']
 BASEURL = 'https://www.oslo.kommune.no/avfall-og-gjenvinning/nar-hentes-avfallet/'
 
 ATTR_PICKUP_DATE = 'pickup_date'
@@ -37,6 +37,7 @@ class OsloWasteScraper:
         return self._wastes.keys()
 
     def update(self):
+        from bs4 import BeautifulSoup
         req = requests.get(BASEURL, timeout=10, params={'street':self._street})
         data = BeautifulSoup(req.text, 'html.parser')
         
