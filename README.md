@@ -16,4 +16,4 @@ sensor:
     address: 'Drammensveien 1'
 ```
 
-The address entry is mandatory, and should match with one of the headings in the search results after searching on this web page: https://www.oslo.kommune.no/avfall-og-gjenvinning/nar-hentes-avfallet/.  If searching for your address does not return the search results you need, you can set the search string with the optional 'street' config option.
+The address entry is mandatory, and should match with one of the headings in the search results after searching on this web page: https://www.oslo.kommune.no/avfall-og-gjenvinning/avfallshenting/.  If searching for your address does not return the search results you need, you can set the search string with the optional 'street' config option.
