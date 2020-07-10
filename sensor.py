@@ -13,7 +13,7 @@ from homeassistant.helpers.entity import Entity
 
 REQUIREMENTS = ['beautifulsoup4==4.7.1'] # TODO: Remove this when it can be loaded with manifestfile
 
-BASEURL = 'https://www.oslo.kommune.no/avfall-og-gjenvinning/nar-hentes-avfallet/'
+BASEURL = 'https://www.oslo.kommune.no/avfall-og-gjenvinning/avfallshenting/'
 
 ATTR_PICKUP_DATE = 'pickup_date'
 ATTR_PICKUP_FREQUENCY = 'pickup_frequency'
