@@ -33,7 +33,8 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     waste_types = await ws.waste_types()
 
     for wt in waste_types:
-        _LOGGER.info("Adding sensor for %s (%s)", config['address'], wt)
+        
+        .info("Adding sensor for %s (%s)", config['address'], wt)
         async_add_entities([OsloWasteSensor(hass, ws, wt)], True)
 
 
@@ -113,7 +114,7 @@ class OsloWasteSensor(Entity):
         """
         if self._state is not None:
             if (self._state - date.today()).days > 0:
-                _LOGGER.info("%s - Skipping update.", self.entity_slug)
+                _LOGGER.debug("%s - Skipping update.", self.entity_slug)
                 return
         await self._scraper.async_update()
 
