@@ -33,8 +33,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     waste_types = await ws.waste_types()
 
     for wt in waste_types:
-        
-        .info("Adding sensor for %s (%s)", config['address'], wt)
+        _LOGGER.info("Adding sensor for %s (%s)", config['address'], wt)
         async_add_entities([OsloWasteSensor(hass, ws, wt)], True)
 
 
