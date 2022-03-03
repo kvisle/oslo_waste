@@ -49,7 +49,7 @@ class OsloWasteScraper:
 
     async def async_update(self):
         from bs4 import BeautifulSoup  # TODO: Move this to the top when deps are installed from manifest
-        with async_timeout.timeout(10, loop=self.hass.loop):
+        with async_timeout.timeout(10):
             req = await async_get_clientsession(
                 self.hass).get(BASEURL, params={'street':self._street})
             result = await req.text()
