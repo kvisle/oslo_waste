@@ -94,7 +94,7 @@ class OsloWasteSensor(Entity):
             return (self._state - date.today()).days
 
     @property
-    def device_state_attributes(self) -> dict:
+    def extra_state_attributes(self) -> dict:
         return self._attributes
 
     @property
